@@ -1,0 +1,9 @@
+<app-header></app-header>
+<app-reservation
+  [sliderDate]="sliderDate"
+  [sliderTime]="sliderTime"
+></app-reservation>
+<app-time-slider
+  [selectedDate]="sliderDate"
+  (timeChange)="onSliderChange($event.time, $event.date)"
+></app-time-slider>
