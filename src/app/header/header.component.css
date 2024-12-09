@@ -1,0 +1,25 @@
+header {
+    text-align: center;
+    margin: 1rem auto;
+    background-color: #1552bb; 
+    color: white; 
+    padding: 2rem; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+    max-width: 800px; 
+}
+
+header img {
+    width: 5rem;
+    height: 5rem;
+    object-fit: contain;
+    background-color: transparent;
+    margin-bottom: 1rem; 
+}
+
+header h1 {
+    font-size: 2rem; 
+    font-weight: bold; 
+    letter-spacing: 2px; 
+    margin: 0; 
+}
