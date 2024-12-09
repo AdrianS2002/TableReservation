@@ -1,25 +1,29 @@
+/* The main header container */
 header {
-    text-align: center;
-    margin: 1rem auto;
-    background-color: #1552bb; 
-    color: white; 
-    padding: 2rem; 
-    border-radius: 10px; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
-    max-width: 800px; 
-}
-
-header img {
-    width: 5rem;
-    height: 5rem;
-    object-fit: contain;
-    background-color: transparent;
-    margin-bottom: 1rem; 
-}
-
-header h1 {
-    font-size: 2rem; 
-    font-weight: bold; 
-    letter-spacing: 2px; 
-    margin: 0; 
-}
+    text-align: center; /* Center aligns the content */
+    margin: 1rem auto; /* Adds space around the header */
+    background-color: #1552bb; /* Sets a blue background color */
+    color: white; /* Sets text color to white */
+    padding: 2rem; /* Adds padding inside the header */
+    border-radius: 10px; /* Rounds the corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+    max-width: 800px; /* Limits the width of the header */
+  }
+  
+  /* Styling for the header image */
+  header img {
+    width: 5rem; /* Sets image width */
+    height: 5rem; /* Sets image height */
+    object-fit: contain; /* Ensures the image fits without distortion */
+    background-color: transparent; /* Transparent background for the image */
+    margin-bottom: 1rem; /* Adds space below the image */
+  }
+  
+  /* Styling for the header title */
+  header h1 {
+    font-size: 2rem; /* Sets font size for the title */
+    font-weight: bold; /* Makes the text bold */
+    letter-spacing: 2px; /* Adds space between letters */
+    margin: 0; /* Removes default margin */
+  }
+  

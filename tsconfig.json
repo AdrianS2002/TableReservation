@@ -29,5 +29,13 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
+  "include": [
+    "src/**/*" // Include all TypeScript files in the src directory
+  ],
+  "exclude": [
+    "node_modules", // Exclude node_modules
+    "dist",         // Exclude the output directory
+    "e2e"           // Exclude end-to-end test files
+  ]
 }
