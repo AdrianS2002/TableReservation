@@ -1,0 +1,21 @@
+<app-new-reservation *ngIf="selectedTableId()" [tableId]="selectedTableId()!"
+  (close)="onCloseForm()"></app-new-reservation>
+
+<section id="tables">
+  <table>
+    <tr *ngFor="let row of tableRows()">
+      <td *ngFor="let table of row">
+        <div class="table" [ngClass]="{ 'table-occupied': table.reserved,   'table-overlapping': table.isOverlapping }" (click)="onSelectTable(table)">
+          <img [src]="table.isOverlapping
+            ? 'meetingOcuppaid.png'
+            : table.reserved
+            ? 'meetingOcuppaid.png'
+            : 'meeting.png'" alt="Table {{ table.id }}" />
+          <p>Table {{ table.id }}</p>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+
+</section>
