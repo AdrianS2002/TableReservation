@@ -1,0 +1,23 @@
+#time-slider {
+  text-align: center;
+  margin: 1rem auto;
+  background-color: #3dbde4; 
+  color: white; 
+  padding: 1rem; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+  max-width: 800px; 
+}
+  
+  .date-picker,
+  .slider-container {
+    margin: 1rem 0;
+    text-align: center;
+  }
+  
+  #slider-date,
+  #time-slider {
+    width: 80%;
+    max-width: 400px;
+  }
+  

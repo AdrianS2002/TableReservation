@@ -1,0 +1,23 @@
+<section id="time-slider">
+    <div class="date-picker">
+      <label for="slider-date">Select Date:</label>
+      <input
+        type="date"
+        id="slider-date"
+        [value]="selectedDate"
+        (change)="onDateChange($event)"
+      />
+    </div>
+    <div class="slider-container">
+      <label for="time-slider">Time: {{ sliderTime }}</label>
+      <input
+        type="range"
+        id="time-slider"
+        min="0"
+        max="1439"
+        [value]="sliderValue"
+        (input)="onTimeChange($event)"
+      />
+    </div>
+  </section>
+  
