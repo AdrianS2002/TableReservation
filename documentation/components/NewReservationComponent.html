@@ -1,0 +1,1241 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>table-reservation documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">table-reservation documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  NewReservationComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/reservation/new-reservation/new-reservation.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-new-reservation</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>FormsModule</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./new-reservation.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./new-reservation.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#date" >date</a>
+                            </li>
+                            <li>
+                                <a href="#endTime" >endTime</a>
+                            </li>
+                            <li>
+                                <a href="#errorMessage" >errorMessage</a>
+                            </li>
+                            <li>
+                                <a href="#name" >name</a>
+                            </li>
+                            <li>
+                                <a href="#noPersons" >noPersons</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#reservationService" >reservationService</a>
+                            </li>
+                            <li>
+                                <a href="#startTime" >startTime</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#formatDate" >formatDate</a>
+                            </li>
+                            <li>
+                                <a href="#formatTime" >formatTime</a>
+                            </li>
+                            <li>
+                                <a href="#onCancel" >onCancel</a>
+                            </li>
+                            <li>
+                                <a href="#onSubmit" >onSubmit</a>
+                            </li>
+                            <li>
+                                <a href="#validateInputs" >validateInputs</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#tableId" >tableId</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#close" >close</a>
+                            </li>
+                            <li>
+                                <a href="#reservationAdded" >reservationAdded</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tableId"></a>
+                        <b>tableId</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/reservation/new-reservation/new-reservation.component.ts:13</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section data-compodoc="block-outputs">
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="close"></a>
+                        <b>close</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/reservation/new-reservation/new-reservation.component.ts:14</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="reservationAdded"></a>
+                        <b>reservationAdded</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/reservation/new-reservation/new-reservation.component.ts:15</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatDate"></a>
+                    <span class="name">
+                        <span ><b>formatDate</b></span>
+                        <a href="#formatDate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatDate(date: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">Date</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="85"
+                                    class="link-to-prism">src/app/reservation/new-reservation/new-reservation.component.ts:85</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>date</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatTime"></a>
+                    <span class="name">
+                        <span ><b>formatTime</b></span>
+                        <a href="#formatTime"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatTime(date: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">Date</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="89"
+                                    class="link-to-prism">src/app/reservation/new-reservation/new-reservation.component.ts:89</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>date</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onCancel"></a>
+                    <span class="name">
+                        <span ><b>onCancel</b></span>
+                        <a href="#onCancel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onCancel()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="27"
+                                    class="link-to-prism">src/app/reservation/new-reservation/new-reservation.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSubmit"></a>
+                    <span class="name">
+                        <span ><b>onSubmit</b></span>
+                        <a href="#onSubmit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSubmit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="31"
+                                    class="link-to-prism">src/app/reservation/new-reservation/new-reservation.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validateInputs"></a>
+                    <span class="name">
+                        <span ><b>validateInputs</b></span>
+                        <a href="#validateInputs"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>validateInputs()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="58"
+                                    class="link-to-prism">src/app/reservation/new-reservation/new-reservation.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="date"></a>
+                    <span class="name">
+                        <span ><b>date</b></span>
+                        <a href="#date"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/reservation/new-reservation/new-reservation.component.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="endTime"></a>
+                    <span class="name">
+                        <span ><b>endTime</b></span>
+                        <a href="#endTime"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/reservation/new-reservation/new-reservation.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="errorMessage"></a>
+                    <span class="name">
+                        <span ><b>errorMessage</b></span>
+                        <a href="#errorMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/reservation/new-reservation/new-reservation.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="name"></a>
+                    <span class="name">
+                        <span ><b>name</b></span>
+                        <a href="#name"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/reservation/new-reservation/new-reservation.component.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="noPersons"></a>
+                    <span class="name">
+                        <span ><b>noPersons</b></span>
+                        <a href="#noPersons"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>1</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/reservation/new-reservation/new-reservation.component.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="reservationService"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>reservationService</b></span>
+                        <a href="#reservationService"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>inject(ReservationService)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/reservation/new-reservation/new-reservation.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="startTime"></a>
+                    <span class="name">
+                        <span ><b>startTime</b></span>
+                        <a href="#startTime"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/reservation/new-reservation/new-reservation.component.ts:21</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, Input, Output, inject } from &#x27;@angular/core&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { ReservationService } from &#x27;../reservation.service&#x27;;
+
+@Component({
+  selector: &#x27;app-new-reservation&#x27;,
+  standalone: true,
+  imports: [FormsModule],
+  templateUrl: &#x27;./new-reservation.component.html&#x27;,
+  styleUrls: [&#x27;./new-reservation.component.css&#x27;],
+})
+export class NewReservationComponent {
+  @Input() tableId!: string; // ID-ul mesei selectate pentru rezervare
+  @Output() close &#x3D; new EventEmitter&lt;void&gt;(); // Eveniment pentru închiderea formularului
+  @Output() reservationAdded &#x3D; new EventEmitter&lt;void&gt;(); // Eveniment pentru rezervare adăugată
+
+  // Variabile pentru formular
+  name &#x3D; &#x27;&#x27;;
+  noPersons &#x3D; 1;
+  date &#x3D; &#x27;&#x27;;
+  startTime &#x3D; &#x27;&#x27;;
+  endTime &#x3D; &#x27;&#x27;;
+
+  private reservationService &#x3D; inject(ReservationService); // Injectăm serviciul de rezervări
+  errorMessage &#x3D; &#x27;&#x27;; // Variabilă pentru mesajele de eroare
+
+  onCancel() {
+    this.close.emit(); // Emetem evenimentul pentru a închide formularul
+  }
+
+  onSubmit() {
+    this.errorMessage &#x3D; &#x27;&#x27;; // Resetăm mesajele de eroare
+
+    // Validăm intrările
+    if (!this.validateInputs()) {
+      return;
+    }
+
+    try {
+      // Adăugăm rezervarea prin serviciu
+      this.reservationService.addReservation({
+        tableId: this.tableId,
+        name: this.name.trim(),
+        noPersons: this.noPersons,
+        date: this.date,
+        startTime: this.startTime,
+        endTime: this.endTime,
+      });
+
+      // Emit evenimente și închidem formularul
+      this.reservationAdded.emit();
+      this.close.emit();
+    } catch (error: any) {
+      this.errorMessage &#x3D; error.message || &#x27;An unexpected error occurred.&#x27;;
+    }
+  }
+
+  validateInputs(): boolean {
+    if (!this.name.trim() || !this.date || !this.startTime || !this.endTime || this.noPersons &lt; 1) {
+      this.errorMessage &#x3D; &#x27;Please fill in all fields before submitting.&#x27;;
+      return false;
+    }
+
+    const today &#x3D; new Date();
+    const selectedDate &#x3D; new Date(this.date);
+
+    if (selectedDate.getTime() &lt; today.setHours(0, 0, 0, 0)) {
+      this.errorMessage &#x3D; &#x27;You cannot select a past date.&#x27;;
+      return false;
+    }
+
+    if (this.date &#x3D;&#x3D;&#x3D; this.formatDate(today) &amp;&amp; this.startTime &lt; this.formatTime(today)) {
+      this.errorMessage &#x3D; &#x27;Start time cannot be in the past.&#x27;;
+      return false;
+    }
+
+    if (this.startTime &gt;&#x3D; this.endTime) {
+      this.errorMessage &#x3D; &#x27;Start time must be before end time.&#x27;;
+      return false;
+    }
+
+    return true;
+  }
+
+  formatDate(date: Date): string {
+    return date.toISOString().split(&#x27;T&#x27;)[0]; // Formatăm data ca yyyy-MM-dd
+  }
+
+  formatTime(date: Date): string {
+    return date.toTimeString().split(&#x27; &#x27;)[0].substring(0, 5); // Formatăm timpul ca HH:mm
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;backdrop&quot; (click)&#x3D;&quot;onCancel()&quot;&gt;&lt;/div&gt;
+&lt;dialog open&gt;
+  &lt;h2&gt;Reserve Table {{ tableId }}&lt;/h2&gt;
+  &lt;form (ngSubmit)&#x3D;&quot;onSubmit()&quot;&gt;
+    @if(errorMessage)
+    {&lt;p  class&#x3D;&quot;error&quot;&gt;{{ errorMessage }}&lt;/p&gt;}
+    
+    &lt;p&gt;
+      &lt;label for&#x3D;&quot;name&quot;&gt;Name&lt;/label&gt;
+      &lt;input
+        type&#x3D;&quot;text&quot;
+        id&#x3D;&quot;name&quot;
+        [(ngModel)]&#x3D;&quot;name&quot;
+        name&#x3D;&quot;name&quot;
+        required
+      /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;label for&#x3D;&quot;noPersons&quot;&gt;Number of Persons&lt;/label&gt;
+      &lt;input
+        type&#x3D;&quot;number&quot;
+        id&#x3D;&quot;noPersons&quot;
+        [(ngModel)]&#x3D;&quot;noPersons&quot;
+        name&#x3D;&quot;noPersons&quot;
+        min&#x3D;&quot;1&quot;
+        required
+      /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;label for&#x3D;&quot;date&quot;&gt;Date&lt;/label&gt;
+      &lt;input
+        type&#x3D;&quot;date&quot;
+        id&#x3D;&quot;date&quot;
+        [(ngModel)]&#x3D;&quot;date&quot;
+        name&#x3D;&quot;date&quot;
+        required
+      /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;label for&#x3D;&quot;startTime&quot;&gt;Start Time&lt;/label&gt;
+      &lt;input
+        type&#x3D;&quot;time&quot;
+        id&#x3D;&quot;startTime&quot;
+        [(ngModel)]&#x3D;&quot;startTime&quot;
+        name&#x3D;&quot;startTime&quot;
+        required
+      /&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;label for&#x3D;&quot;endTime&quot;&gt;End Time&lt;/label&gt;
+      &lt;input
+        type&#x3D;&quot;time&quot;
+        id&#x3D;&quot;endTime&quot;
+        [(ngModel)]&#x3D;&quot;endTime&quot;
+        name&#x3D;&quot;endTime&quot;
+        required
+      /&gt;
+    &lt;/p&gt;
+    &lt;p class&#x3D;&quot;actions&quot;&gt;
+      &lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;onCancel()&quot;&gt;Cancel&lt;/button&gt;
+      &lt;button type&#x3D;&quot;submit&quot;&gt;Reserve&lt;/button&gt;
+    &lt;/p&gt;
+  &lt;/form&gt;
+&lt;/dialog&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./new-reservation.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">/* Backdrop Styling */
+.backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Lighter overlay for visibility */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+dialog {
+    width: 90%;
+    max-width: 30rem;
+    background-color: rgb(235, 235, 231);
+    border-radius: 10px;
+    border: 2px solid rgba(5, 226, 255, 0.4);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    padding: 1rem;
+    top: 5rem;
+}
+
+/* Heading */
+h2 {
+    margin: 0;
+    color: #1552bb;
+    /* Match header text color */
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Form Labels */
+label {
+    display: block;
+    font-weight: bold;
+    font-size: 0.85rem;
+    color: rgb(64, 64, 224);
+    /* Match table text color */
+}
+
+input,
+textarea {
+    width: 100%;
+    font: inherit;
+    padding: 0.15rem 0.25rem;
+    border-radius: 6px;
+    /* Slightly more rounded for a softer look */
+    border: 1px solid rgba(5, 226, 255, 0.4);
+    /* Match table accent color */
+    background-color: rgba(5, 226, 255, 0.1);
+    /* Light background to match the hover style */
+    margin-bottom: 1rem;
+    color: #1552bb;
+    /* Match header text color */
+}
+
+/* Form Actions */
+.actions {
+    margin: 1rem 0 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    /* More space between buttons */
+}
+
+/* Buttons */
+button {
+    font: inherit;
+    cursor: pointer;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 6px;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+button[type&#x3D;&quot;button&quot;] {
+    color: rgb(220, 53, 70);
+    /* Match occupied table color */
+}
+
+button[type&#x3D;&quot;button&quot;]:hover,
+button[type&#x3D;&quot;button&quot;]:active {
+    color: rgba(220, 53, 70, 0.8);
+    /* Slightly darker on hover */
+}
+
+button[type&#x3D;&quot;submit&quot;] {
+    background-color: #1552bb;
+    /* Match header background color */
+    color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+button[type&#x3D;&quot;submit&quot;]:hover,
+button[type&#x3D;&quot;submit&quot;]:active {
+    background-color: #113c8a;
+    /* Darker shade for hover */
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+    dialog {
+        padding: 2rem;
+    }
+}
+
+.error {
+    color: #d9534f;
+    /* Red for error messages */
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    display: block;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="backdrop" (click)="onCancel()"></div><dialog open>  <h2>Reserve Table {{ tableId }}</h2>  <form (ngSubmit)="onSubmit()">    @if(errorMessage)    {<p  class="error">{{ errorMessage }}</p>}        <p>      <label for="name">Name</label>      <input        type="text"        id="name"        [(ngModel)]="name"        name="name"        required      />    </p>    <p>      <label for="noPersons">Number of Persons</label>      <input        type="number"        id="noPersons"        [(ngModel)]="noPersons"        name="noPersons"        min="1"        required      />    </p>    <p>      <label for="date">Date</label>      <input        type="date"        id="date"        [(ngModel)]="date"        name="date"        required      />    </p>    <p>      <label for="startTime">Start Time</label>      <input        type="time"        id="startTime"        [(ngModel)]="startTime"        name="startTime"        required      />    </p>    <p>      <label for="endTime">End Time</label>      <input        type="time"        id="endTime"        [(ngModel)]="endTime"        name="endTime"        required      />    </p>    <p class="actions">      <button type="button" (click)="onCancel()">Cancel</button>      <button type="submit">Reserve</button>    </p>  </form></dialog></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'NewReservationComponent', 'selector': 'app-new-reservation'},{'name': 'ReservationComponent', 'selector': 'app-reservation'},{'name': 'TableComponent', 'selector': 'app-table'},{'name': 'TimeSliderComponent', 'selector': 'app-time-slider'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'NewReservationComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'NewReservationComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
