@@ -1,0 +1,101 @@
+<!-- new-reservation-on-button.component.html -->
+
+<div class="modal" (click)="onCancel()">
+    <div class="modal-content" (click)="$event.stopPropagation()" role="dialog" aria-modal="true" aria-labelledby="reserve-title">
+      <h2 id="reserve-title">Reserve a Table</h2>
+  
+      <form (ngSubmit)="onSubmit()">
+        <!-- Error Message -->
+        <div *ngIf="errorMessage" class="error">
+          {{ errorMessage }}
+        </div>
+  
+        <!-- Name Input -->
+        <p>
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            [(ngModel)]="name"
+            name="name"
+            required
+          />
+        </p>
+  
+        <!-- Number of Persons -->
+        <p>
+          <label for="noPersons">Number of Persons</label>
+          <input
+            type="number"
+            id="noPersons"
+            [(ngModel)]="noPersons"
+            name="noPersons"
+            min="1"
+            required
+          />
+        </p>
+  
+        <!-- Date Input -->
+        <p>
+          <label for="date">Date</label>
+          <input
+            type="date"
+            id="date"
+            [(ngModel)]="date"
+            name="date"
+            (change)="onDateTimeChange()"
+            required
+          />
+        </p>
+  
+        <!-- Start Time Input -->
+        <p>
+          <label for="startTime">Start Time</label>
+          <input
+            type="time"
+            id="startTime"
+            [(ngModel)]="startTime"
+            name="startTime"
+            (change)="onDateTimeChange()"
+            required
+          />
+        </p>
+  
+        <!-- End Time Input -->
+        <p>
+          <label for="endTime">End Time</label>
+          <input
+            type="time"
+            id="endTime"
+            [(ngModel)]="endTime"
+            name="endTime"
+            (change)="onDateTimeChange()"
+            required
+          />
+        </p>
+  
+        <!-- Table Dropdown -->
+        <p>
+          <label for="table">Select Table</label>
+          <select
+            id="table"
+            [(ngModel)]="selectedTableId"
+            name="table"
+            required
+          >
+            <option value="" disabled selected>Select a table</option>
+            <option *ngFor="let table of availableTables" [value]="table.id">
+              {{ table.id }}
+            </option>
+          </select>
+        </p>
+  
+        <!-- Form Actions -->
+        <p class="actions">
+          <button type="button" (click)="onCancel()">Cancel</button>
+          <button type="submit">Reserve</button>
+        </p>
+      </form>
+    </div>
+  </div>
+  

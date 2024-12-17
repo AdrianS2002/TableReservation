@@ -1,21 +1,50 @@
-<app-new-reservation *ngIf="selectedTableId()" [tableId]="selectedTableId()!"
-  (close)="onCloseForm()"></app-new-reservation>
+<!-- "Reserve a Table" Button -->
+<div id="reserve-button">
+  <button (click)="openNewReservation()" class="reserve-button">
+    Reserve a Table
+  </button>
+</div>
 
+<app-new-reservation-on-button
+  *ngIf="isNewReservationOnButtonOpen()"
+  (close)="closeNewReservationOnButton()"
+  (reservationAdded)="onReservationAdded()"
+></app-new-reservation-on-button>
+
+<!-- Existing NewReservationComponent when selecting a specific table -->
+<app-new-reservation
+  *ngIf="selectedTableId()"
+  [tableId]="selectedTableId()!"
+  (close)="onCloseForm()"
+  (reservationAdded)="onReservationAdded()"
+></app-new-reservation>
+
+<!-- Tables Grid -->
 <section id="tables">
   <table>
     <tr *ngFor="let row of tableRows()">
       <td *ngFor="let table of row">
-        <div class="table" [ngClass]="{ 'table-occupied': table.reserved,   'table-overlapping': table.isOverlapping }" (click)="onSelectTable(table)">
-          <img [src]="table.isOverlapping
-            ? 'meetingOcuppaid.png'
-            : table.reserved
-            ? 'meetingOcuppaid.png'
-            : 'meeting.png'" alt="Table {{ table.id }}" />
+        <div
+          class="table"
+          [ngClass]="{
+            'table-occupied': table.reserved,
+            'table-overlapping': table.isOverlapping
+          }"
+          (click)="onSelectTable(table)"
+        >
+          <img
+            [src]="
+              table.isOverlapping
+                ? 'meetingOcuppaid.png'
+                : table.reserved
+                ? 'meetingOcuppaid.png'
+                : 'meeting.png'
+            "
+            alt="Table {{ table.id }}"
+          />
           <p>Table {{ table.id }}</p>
         </div>
       </td>
     </tr>
   </table>
-
-
 </section>

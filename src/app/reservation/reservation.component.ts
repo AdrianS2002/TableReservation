@@ -1,8 +1,12 @@
+// src/app/reservation/reservation.component.ts
+
 import { Component, Input, signal, computed, SimpleChanges } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Import CommonModule
+import { CommonModule } from '@angular/common';
 import { Table } from '../table/table.model';
-import { ReservationService } from './reservation.service';
+import { ReservationService, Reservation } from './reservation.service';
 import { NewReservationComponent } from "./new-reservation/new-reservation.component";
+import { NewReservationOnButtonComponent } from "./new-reservation-on-button/new-reservation-on-button.component";
+
 /**
  * Component to display and manage table reservations.
  * It includes a grid of tables with their reservation status
@@ -13,7 +17,11 @@ import { NewReservationComponent } from "./new-reservation/new-reservation.compo
 @Component({
   selector: 'app-reservation',
   standalone: true,
-  imports: [CommonModule, NewReservationComponent],
+  imports: [
+    CommonModule,
+    NewReservationComponent,
+    NewReservationOnButtonComponent, // Import the new component
+  ],
   templateUrl: './reservation.component.html',
   styleUrls: ['./reservation.component.css'],
 })
@@ -23,6 +31,7 @@ export class ReservationComponent {
     * @type {string}
     */
   @Input() sliderDate!: string;
+
   /**
    * The current time selected on the slider.
    * @type {string}
@@ -34,6 +43,7 @@ export class ReservationComponent {
    * @type {Signal<Table[]>}
    */
   tables = signal<Table[]>([]);
+
   /**
    * Computed property to organize tables into rows for display in a grid.
    * @returns {Table[][]}
@@ -47,6 +57,7 @@ export class ReservationComponent {
     }
     return rows;
   });
+
   /**
    * Constructor to inject the ReservationService.
    * @param {ReservationService} reservationService
@@ -64,12 +75,13 @@ export class ReservationComponent {
       this.updateTableStatuses();
     }
   }
+
   /**
    * Updates the reservation status of all tables based on the slider date and time.
    */
   updateTableStatuses() {
-    const currentDate = this.sliderDate; // Data curentă de la slider
-    const currentTime = this.sliderTime; // Timpul curent de la slider
+    const currentDate = this.sliderDate; // Current date from slider
+    const currentTime = this.sliderTime; // Current time from slider
 
     this.tables.update((tables) =>
       tables.map((table) => {
@@ -77,33 +89,30 @@ export class ReservationComponent {
 
         if (table.reservations && table.reservations.length > 0) {
           for (const reservation of table.reservations) {
-            const reservationDate = reservation.date; // Data rezervării
-            const reservationStartTime = reservation.startTime; // Start time al rezervării
-            const reservationEndTime = reservation.endTime; // End time al rezervării
+            const reservationDate = reservation.date; // Reservation date
+            const reservationStartTime = reservation.startTime; // Reservation start time
+            const reservationEndTime = reservation.endTime; // Reservation end time
 
-            // Verificăm dacă rezervarea este activă
+            // Check if reservation is active
             if (
-              reservationDate === currentDate && // Datele trebuie să fie egale
-              currentTime >= reservationStartTime && // Timpul să fie după start
-              currentTime < reservationEndTime // Timpul să fie înainte de end
+              reservationDate === currentDate && // Dates must match
+              currentTime >= reservationStartTime && // Current time after start
+              currentTime < reservationEndTime // Current time before end
             ) {
-              isReserved = true; // Masa este rezervată
-              break; // Oprire, nu mai continuăm verificarea altor rezervări
+              isReserved = true; // Table is reserved
+              break; // Stop checking further reservations
             }
           }
         }
 
-        // Returnăm starea actualizată a mesei
+        // Return updated table status
         return { ...table, reserved: isReserved };
       })
     );
 
-    // Debugging: Afișează stările actualizate ale meselor
+    // Debugging: Log updated table statuses
     console.log('Updated Tables:', this.tables());
   }
-
-
-
 
   ngOnInit() {
     this.initializeTables();
@@ -111,9 +120,8 @@ export class ReservationComponent {
   }
 
   /**
- * Initializes the tables with default values.
- */
-
+   * Initializes the tables with default values.
+   */
   initializeTables() {
     const initialTables = Array.from({ length: 16 }, (_, index) => ({
       id: `t${index + 1}`,
@@ -122,9 +130,10 @@ export class ReservationComponent {
     }));
     this.tables.set(initialTables); // Set initial state with signal
   }
+
   /**
-     * Updates the table reservations based on the data from the ReservationService.
-     */
+   * Updates the table reservations based on the data from the ReservationService.
+   */
   updateTableReservations() {
     const reservations = this.reservationService.getReservations();
     this.tables.update((tables) =>
@@ -135,7 +144,9 @@ export class ReservationComponent {
       }))
     );
   }
+
   selectedTableId = signal<string | null>(null);
+
   /**
    * Handles the selection of a table by the user.
    * @param {Table} table - The selected table.
@@ -150,13 +161,42 @@ export class ReservationComponent {
       console.log(`Status ${table.reserved}`);
     }
   }
+
   /**
-  * Closes the reservation form and refreshes the table reservations.
-  */
+   * Closes the reservation form and refreshes the table reservations.
+   */
   onCloseForm() {
     this.selectedTableId.set(null); // Close the form
     this.updateTableReservations(); // Refresh table reservations
   }
 
+  /**
+   * Opens the reservation popup for selecting any available table.
+   */
+  openNewReservation() {
+    this.isNewReservationOnButtonOpen.set(true);
+  }
 
+  /**
+   * Closes the reservation popup initiated via the button.
+   */
+  closeNewReservationOnButton() {
+    this.isNewReservationOnButtonOpen.set(false);
+    this.updateTableReservations();
+  }
+
+  /**
+   * Signal to control the visibility of the NewReservationOnButtonComponent popup.
+   * @type {Signal<boolean>}
+   */
+  isNewReservationOnButtonOpen = signal<boolean>(false);
+
+  /**
+   * Handles the event after a reservation is successfully added.
+   */
+  onReservationAdded() {
+    this.updateTableReservations();
+    this.isNewReservationOnButtonOpen.set(false);
+    this.selectedTableId.set(null);
+  }
 }
